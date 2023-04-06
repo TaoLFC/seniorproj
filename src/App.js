@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/Home";
 import CodeEditorPage from "./pages/CodeEditorPage";
+import PortfolioPage from './pages/Portfolio';
+import StrategyManagementPage from './pages/StrategyManagement';
 
 function App() {
   return (
@@ -14,12 +16,12 @@ function App() {
         <Route path="/CodeEditorPage">
           <CodeEditorPage />
         </Route>
-        {/* <Route path="/portfolio">
+        <Route path="/portfolio">
           <PortfolioPage />
         </Route>
         <Route path="/strategy-management">
           <StrategyManagementPage />
-        </Route> */}
+        </Route>
       </Switch>
     </Router>
   );

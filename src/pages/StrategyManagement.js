@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
-import '/Users/taopuchong/Desktop/seniorproj/src/StrategyManagement.css';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import './StrategyManagement.css';
 
-const StrategyManagementPage = () => {
-  const [strategies, setStrategies] = useState([
-    {
-      name: 'Engulfing',
-      lastSaved: '12/03/2023 18:20',
-      lastExecuted: '14/03/2023 16:20',
-      active: false,
-    },
-  ]);
+const StrategyManagement = () => {
+  const [strategy, setStrategy] = useState({
+    name: "Engulfing",
+    lastSaved: "12/03/2023 18:20",
+    lastExecuted: "14/03/2023 16:20",
+    isActive: false,
+  });
 
-  const toggleActive = (index) => {
-    const updatedStrategies = [...strategies];
-    updatedStrategies[index].active = !updatedStrategies[index].active;
-    setStrategies(updatedStrategies);
+  const toggleActivation = () => {
+    setStrategy({
+      ...strategy,
+      isActive: !strategy.isActive,
+    });
   };
 
   return (
-    <div className="strategy-management-page">
-      <div className="tab">Strategy Management</div>
-      <table className="table">
+    <div className="container">
+      <button className="back-button" onClick={() => window.history.back()}>
+        Back
+      </button>
+      <h1 className="title">Strategy Management</h1>
+      <table className="strategy-table">
         <thead>
           <tr>
             <th>Strategy</th>
@@ -30,36 +33,25 @@ const StrategyManagementPage = () => {
           </tr>
         </thead>
         <tbody>
-          {strategies.map((strategy, index) => (
-            <tr key={index}>
-              <td>{strategy.name}</td>
-              <td>{strategy.lastSaved}</td>
-              <td>{strategy.lastExecuted}</td>
-              <td>
-                <div className="toggle-switch">
-                  <input
-                    type="checkbox"
-                    className="toggle-switch-checkbox"
-                    id={`toggleSwitch${index}`}
-                    checked={strategy.active}
-                    onChange={() => toggleActive(index)}
-                  />
-                  <label
-                    className="toggle-switch-label"
-                    htmlFor={`toggleSwitch${index}`}
-                  >
-                    <span className="toggle-switch-inner" />
-                    <span className="toggle-switch-switch" />
-                  </label>
-                </div>
-              </td>
-            </tr>
-          ))}
+          <tr>
+            <td>{strategy.name}</td>
+            <td>{strategy.lastSaved}</td>
+            <td>{strategy.lastExecuted}</td>
+            <td>
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={strategy.isActive}
+                  onChange={toggleActivation}
+                />
+                <span className="slider round"></span>
+              </label>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <div className="back-button">Back</div>
     </div>
   );
 };
 
-export default StrategyManagementPage;
+export default StrategyManagement;

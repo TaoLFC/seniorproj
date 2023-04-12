@@ -1,116 +1,58 @@
 import React, { useState } from "react";
-import '/Users/taopuchong/Desktop/seniorproj/src/App.css';
-import { FaFolder, FaSearch, FaCog, FaFileCode } from "react-icons/fa";
+import "./CodeEditorPage.css";
 
-const CodeEditorPage = () => {
-  const [isFileExplorerSelected, setIsFileExplorerSelected] = useState(false);
-  const [isSearchSelected, setIsSearchSelected] = useState(false);
-  const [isExtensionSelected, setIsExtensionSelected] = useState(false);
-  const [isSettingsSelected, setIsSettingsSelected] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+function CodeEditorPage() {
+  const [theme, setTheme] = useState("light");
+  const [code, setCode] = useState("// Type your code here...");
 
-  const handleFileExplorerClick = () => {
-    setIsFileExplorerSelected(true);
-    setIsSearchSelected(false);
-    setIsExtensionSelected(false);
-    setIsSettingsSelected(false);
+  const handleSaveCode = async () => {
+    try {
+      const response = await fetch("https://your-api-url.com/save-code", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error saving code");
+      }
+  
+      const result = await response.json();
+      console.log("Code saved successfully", result);
+      // Redirect to the new page or perform other actions
+    } catch (error) {
+      console.error("Error saving code:", error.message);
+    }
   };
-
-  const handleSearchClick = () => {
-    setIsFileExplorerSelected(false);
-    setIsSearchSelected(true);
-    setIsExtensionSelected(false);
-    setIsSettingsSelected(false);
-  };
-
-  const handleExtensionClick = () => {
-    setIsFileExplorerSelected(false);
-    setIsSearchSelected(false);
-    setIsExtensionSelected(true);
-    setIsSettingsSelected(false);
-  };
-
-  const handleSettingsClick = () => {
-    setIsFileExplorerSelected(false);
-    setIsSearchSelected(false);
-    setIsExtensionSelected(false);
-    setIsSettingsSelected(true);
-  };
-
-  const handleSearchInputChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  
 
   return (
-    <div className="code-editor-container">
-      <div
-        className={`tab ${isFileExplorerSelected ? "selected" : ""}`}
-        onClick={handleFileExplorerClick}
-      >
-        <FaFolder size={30} />
-        {/* <span>Explorer</span> */}
-        {/* <span className="file-name">filename.js</span> */}
+    <div className={`CodeEditorPage ${theme === "light" ? "light-theme" : "dark-theme"}`}>
+      <div className="settings">
+        <label>
+          Theme:
+          <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+            <option value="light">Pink</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
       </div>
-      <div
-        className={`tab ${isSearchSelected ? "selected" : ""}`}
-        onClick={handleSearchClick}
-      >
-        <FaSearch size={30} />
-        {/* <span>Search</span> */}
-      </div>
-      <div
-        className={`tab ${isExtensionSelected ? "selected" : ""}`}
-        onClick={handleExtensionClick}
-      >
-        <FaFileCode size={30} />
-        {/* <span>Extensions</span> */}
-      </div>
-      <div
-        className={`tab ${isSettingsSelected ? "selected" : ""}`}
-        onClick={handleSettingsClick}
-      >
-        <FaCog size={30} />
-        {/* <span>Settings</span> */}
-      </div>
-      <div className="editor-container">
-        <div className="line-numbers-container">
-          {Array.from({ length: 20 }).map((_, index) => (
-            <div key={index} className="line-number">
-              {index + 1}
-            </div>
-          ))}
+      <div className="code-editor">
+        <div className="toolbar">
+          <button onClick={handleSaveCode}>
+            <img src='save-icon.png' alt="Save" />
+          </button>
         </div>
-        {/* <div className="code-editor-zone">
-          {Array.from({ length: 20 }).map((_, index) => (
-            <div key={index} className="line">
-              {index + 1}
-              {` const hello = "world";`}
-            </div>
-          ))}
-        </div> */}
+        <textarea
+          className="code-textarea"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+        ></textarea>
       </div>
-      {isSearchSelected && (
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={handleSearchInputChange}
-          />
-          <button>Find</button>
-        </div>
-      )}
-      {isExtensionSelected && (
-        <div className="extension-container">
-        <h2>Available Extensions:</h2>
-        <ul>
-          <li>Extension 1</li>
-          <li>Extension 2</li>
-          <li>Extension 3</li>
-        </ul>
-        </div>
-      )}
     </div>
-    );
+  );
 }
+
 export default CodeEditorPage;

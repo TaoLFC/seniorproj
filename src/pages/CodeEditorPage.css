@@ -1,0 +1,62 @@
+.CodeEditorPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .light-theme {
+    background-color: #e38282;
+    color: #333333;
+  }
+  
+  .dark-theme {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  
+  .settings {
+    padding: 1rem;
+  }
+  
+  .code-editor {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .toolbar {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .code-textarea {
+    flex-grow: 1;
+    width: 100%;
+    resize: none;
+    overflow: auto;
+    outline: none;
+    border: none;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-family: monospace;
+    line-height: 1.5;
+    white-space: pre;
+  }
+  .toolbar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  
+  .toolbar button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .toolbar img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  

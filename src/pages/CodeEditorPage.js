@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CodeEditorPage.css";
 
 function CodeEditorPage() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [code, setCode] = useState("// Type your code here...");
 
   const handleSaveCode = async () => {
@@ -43,6 +43,7 @@ function CodeEditorPage() {
         <div className="toolbar">
           <button onClick={handleSaveCode}>
             <img src='save-icon.png' alt="Save" />
+            <span className="btn-name"> Save</span>
           </button>
         </div>
         <textarea

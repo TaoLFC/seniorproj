@@ -9,7 +9,7 @@ function Home() {
     const navigateToCode = () => {
         // 👇️ navigate to /contacts
         // navigate('/CodeEditorPage');
-        history.push('/CodeEditorPage')
+        history.push('/code-editor')
       };
     const navigateToPort = () => {
         // 👇️ navigate to /contacts
@@ -23,10 +23,16 @@ function Home() {
         let path2 = `/strategy-management`;
         history.push(path2)
       };
+    const navigateToLogin = () => {
+        // 👇️ navigate to /contacts
+        // navigate('/CodeEditorPage');
+        let path3 = `/login`;
+        history.push(path3)
+      };
   return (
     <div className="App">
       <header className="App-header">
-        <button className="login-btn" >
+        <button className="login-btn" onClick={navigateToLogin} >
           <span className="login-name">Login</span>
         </button>
       </header>

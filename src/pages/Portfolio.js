@@ -23,10 +23,10 @@ const Portfolio = () => {
 
   return (
     <div className="container">
-      <div className="header">
-        <button className="back-button" onClick={goBack}>
+      <div >
+        {/* <button className="back-button" onClick={goBack}>
           &larr; Back
-        </button>
+        </button> */}
         <div className="tabs">
           <h2 className={`tab ${tab === 'Portfolio' ? 'active' : ''}`} onClick={() => setTab('Portfolio')}>
             Portfolio  |

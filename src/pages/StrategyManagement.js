@@ -19,9 +19,9 @@ const StrategyManagement = () => {
 
   return (
     <div className="container">
-      <button className="back-button" onClick={() => window.history.back()}>
+      {/* <button className="back-button" onClick={() => window.history.back()}>
         Back
-      </button>
+      </button> */}
       <h1 className="title">Strategy Management</h1>
       <table className="strategy-table">
         <thead>

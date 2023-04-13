@@ -7,17 +7,23 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  
 }
 
 .tabs {
   display: flex;
-  margin-left: 42%
+  text-align: center;
+  margin-top: -120%;
 
-
-  ;
+  /* margin-left: 42%; */
+  /* padding-top: 10%; */
 }
 
 .tab {
@@ -48,11 +54,11 @@ td {
 }
 /* Portfolio.css (additions) */
 
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
 .back-button {
   background-color: transparent;

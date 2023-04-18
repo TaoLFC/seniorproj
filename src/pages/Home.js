@@ -1,5 +1,5 @@
 import React from 'react';
-import '/Users/taopuchong/Desktop/seniorproj/src';
+//import '/Users/taopuchong/Desktop/seniorproj/src';
 import { Link, useHistory } from "react-router-dom";
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import './StrategyManagement.css';
 
@@ -10,10 +10,35 @@ const StrategyManagement = () => {
     isActive: false,
   });
 
+  const fetchStrategy = async () => {
+    fetch("http://127.0.0.1:5000/strategy", {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setStrategy({
+          name: data['name'],
+          lastSaved: data['last_saved'],
+          lastExecuted: data['last_executed'],
+          isActive: data['activation']
+      })
+      console.log("fetch strategy successful", data)
+      })
+  }
+
+  useEffect(() => {
+    fetchStrategy()
+  }, [])
+
   const toggleActivation = () => {
     setStrategy({
       ...strategy,
       isActive: !strategy.isActive,
+    });
+    fetch("http://127.0.0.1:5000/strategy", {
+      method: "POST",
     });
   };
 

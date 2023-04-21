@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CodeEditorPage.css";
 
 function CodeEditorPage() {
   const [theme, setTheme] = useState("dark");
   const [code, setCode] = useState("// Type your code here...");
 
+  const fetchSaveCode = async () => {
+    fetch("http://127.0.0.1:5000/code", {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log(data)
+        setCode(data["code"])
+      })
+  }
+
   const handleSaveCode = async () => {
     try {
-      const response = await fetch("https://your-api-url.com/save-code", {
+      const response = await fetch("http://127.0.0.1:5000/code", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +39,14 @@ function CodeEditorPage() {
       console.error("Error saving code:", error.message);
     }
   };
-  
+
+  useEffect(() => {
+    fetchSaveCode()
+  }, [])
+
+  useEffect(() => {
+  console.log("Code state updated:", code);
+}, [code]);
 
   return (
     <div className={`CodeEditorPage ${theme === "light" ? "light-theme" : "dark-theme"}`}>

@@ -32,9 +32,11 @@ function Home() {
   return (
     <div className="App">
       <header className="App-header">
+        {/*
         <button className="login-btn" onClick={navigateToLogin} >
           <span className="login-name">Login</span>
         </button>
+        */}
       </header>
       <div className="content">
         <div className="button-container">

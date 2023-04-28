@@ -6,7 +6,7 @@ function CodeEditorPage() {
   const [code, setCode] = useState("// Type your code here...");
 
   const fetchSaveCode = async () => {
-    fetch("http://127.0.0.1:5000/code", {
+    fetch("https://seniorproj-back-flask.herokuapp.com/code", {
       method: "GET"
     })
       .then(response => {
@@ -20,7 +20,7 @@ function CodeEditorPage() {
 
   const handleSaveCode = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/code", {
+      const response = await fetch("https://seniorproj-back-flask.herokuapp.com/code", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -11,7 +11,7 @@ const StrategyManagement = () => {
   });
 
   const fetchStrategy = async () => {
-    fetch("http://127.0.0.1:5000/strategy", {
+    fetch("https://seniorproj-back-flask.herokuapp.com/strategy", {
       method: "GET"
     })
       .then(response => {
@@ -37,7 +37,7 @@ const StrategyManagement = () => {
       ...strategy,
       isActive: !strategy.isActive,
     });
-    fetch("http://127.0.0.1:5000/strategy", {
+    fetch("https://seniorproj-back-flask.herokuapp.com/strategy", {
       method: "POST",
     });
   };

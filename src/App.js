@@ -1,31 +1,33 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import CodeEditorPage from "./pages/CodeEditorPage";
+import Portfolio from "./pages/Portfolio";
+import StrategyManagement from "./pages/StrategyManagement";
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <button className="login-btn">
-          <span className="login-name">Login</span>
-        </button>
-      </header>
-      <div className="content">
-        <div className="button-container">
-          <button className="btn">
-            <img src="Code.png" alt="Code Editor Logo" />
-            <span className="btn-name">Code Editor</span>
-          </button>
-          <button className="btn">
-            <img src="Portfolio.png" alt="Portfolio Logo" />
-            <span className="btn-name">Portfolio</span>
-          </button>
-          <button className="btn">
-            <img src="Chess.png" alt="Strategy Management Logo" />
-            <span className="btn-name">Strategy Management</span>
-          </button>
-        </div>
+    <Router>
+      <div className="App">
+        <nav className="navigation">
+          <Link to="/">Home</Link>
+          <Link to="/code-editor">Code Editor</Link>
+          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/strategy-management">Strategy Management</Link>
+        </nav>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/code-editor" component={CodeEditorPage} />
+          <Route path="/portfolio" component={Portfolio} />
+          <Route path="/strategy-management" component={StrategyManagement} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
 

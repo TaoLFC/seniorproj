@@ -1,0 +1,16 @@
+.BackendLogPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+  }
+  
+  .BackendLogPage textarea {
+    width: 80%;
+    height: 80%;
+    padding: 1rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #444;
+  }

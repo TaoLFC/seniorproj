@@ -31,6 +31,14 @@ body {
   margin: 0 auto;
 }
 
+.strategy-table a {
+  color: white;
+  text-decoration: none;
+}
+
+.strategy-table a:hover {
+  color: #ccc;
+}
 
 .strategy-table th,
 .strategy-table td {

@@ -1,6 +1,6 @@
 import React from 'react';
 //import '/Users/taopuchong/Desktop/seniorproj/src';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 function Home() {
@@ -23,12 +23,12 @@ function Home() {
         let path2 = `/strategy-management`;
         history.push(path2)
       };
-    const navigateToLogin = () => {
+    /*const navigateToLogin = () => {
         // 👇️ navigate to /contacts
         // navigate('/CodeEditorPage');
         let path3 = `/login`;
         history.push(path3)
-      };
+      };*/
   return (
     <div className="App">
       <header className="App-header">

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import './StrategyManagement.css';
+import { Link, useHistory } from "react-router-dom";
+
 
 const StrategyManagement = () => {
   const [strategy, setStrategy] = useState({
@@ -9,6 +11,11 @@ const StrategyManagement = () => {
     lastExecuted: "14/03/2023 16:20",
     isActive: false,
   });
+
+  const manuallyRun = () => {
+    console.log("Manually running the strategy...");
+    // Add your code to manually run the strategy here
+  };
 
   const fetchStrategy = async () => {
     fetch("https://seniorproj-back-flask.herokuapp.com/strategy", {
@@ -42,6 +49,7 @@ const StrategyManagement = () => {
     });
   };
 
+
   return (
     <div className="container">
       {/* <button className="back-button" onClick={() => window.history.back()}>
@@ -55,11 +63,12 @@ const StrategyManagement = () => {
             <th>Last Saved</th>
             <th>Last Executed</th>
             <th>Activation</th>
+            <th>Manual Run</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{strategy.name}</td>
+            <td><Link to="/code-editor">{strategy.name}</Link></td>
             <td>{strategy.lastSaved}</td>
             <td>{strategy.lastExecuted}</td>
             <td>
@@ -71,6 +80,12 @@ const StrategyManagement = () => {
                 />
                 <span className="slider round"></span>
               </label>
+            </td>
+            <td>
+              <button className="manually-run-btn"onClick={manuallyRun}>
+                <img src='run-icon.png' alt="Run" />
+                {/* <span className="btn-name"> Manually Run</span> */}
+              </button>
             </td>
           </tr>
         </tbody>

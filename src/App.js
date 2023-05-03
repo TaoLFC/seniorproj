@@ -7,6 +7,7 @@ import Portfolio from "./pages/Portfolio";
 import StrategyManagement from "./pages/StrategyManagement";
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import BackendLogPage from "./pages/Backendlog";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Link to="/code-editor">Code Editor</Link>
           <Link to="/portfolio">Portfolio</Link>
           <Link to="/strategy-management">Strategy Management</Link>
+          <Link to="/backendlog">Backend Log</Link>
         </nav>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -25,6 +27,7 @@ function App() {
           <Route path="/strategy-management" component={StrategyManagement} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/backendlog" component={BackendLogPage} />
         </Switch>
       </div>
     </Router>

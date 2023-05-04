@@ -5,7 +5,6 @@ import './Portfolio.css';
 const Portfolio = () => {
   const [tab, setTab] = useState('Portfolio');
   const [portfolioData, setPortfolioData] = useState([]); // Add a state for storing fetched data
-  const navigate = useNavigate();
 
   const profitLoss = (purchasePrice, marketPrice) => {
     const profit = ((marketPrice - purchasePrice) / purchasePrice) * 100;

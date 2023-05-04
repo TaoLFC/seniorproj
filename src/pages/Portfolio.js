@@ -19,7 +19,7 @@ const Portfolio = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/portfolio');
+        const response = await fetch('https://seniorproj-back-flask.herokuapp.com/portfolio');
         const data = await response.json();
         setPortfolioData(data);
       } catch (error) {

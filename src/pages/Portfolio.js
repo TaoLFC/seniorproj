@@ -1,12 +1,10 @@
-// Portfolio.js (updates)
-
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import './Portfolio.css';
 
 const Portfolio = () => {
   const [tab, setTab] = useState('Portfolio');
-  const history = useHistory(); // Add useHistory hook
+  const navigate = useNavigate(); // Add useNavigate hook
 
   const profitLoss = (purchasePrice, marketPrice) => {
     const profit = ((marketPrice - purchasePrice) / purchasePrice) * 100;
@@ -17,9 +15,9 @@ const Portfolio = () => {
     }
   };
 
-  const goBack = () => {
-    history.goBack(); // Add goBack function to handle back button click
-  };
+  /*const goBack = () => {
+    navigate(-1); // Add goBack function to handle back button click
+  };*/
 
   return (
     <div className="container">

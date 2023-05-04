@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 import "./Register.css";
 
 const Register = () => {
@@ -8,7 +8,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate(); // Add useNavigate hook
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const Register = () => {
 
       if (response.ok) {
         // Registration successful, redirect to home page
-        history.push("/");
+        navigate("/");
       } else {
         // Registration failed, show error message
         setErrorMessage("Registration failed. Please try again.");

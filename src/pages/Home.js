@@ -1,28 +1,20 @@
 import React from 'react';
-//import '/Users/taopuchong/Desktop/seniorproj/src';
-import { useHistory } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    // const navigate = useNavigate();
-    const history = useHistory()
-    const navigateToCode = () => {
-        // 👇️ navigate to /contacts
-        // navigate('/CodeEditorPage');
-        history.push('/code-editor')
-      };
-    const navigateToPort = () => {
-        // 👇️ navigate to /contacts
-        // navigate('/CodeEditorPage');
-        let path = `/portfolio`;
-        history.push(path)
-      };
-    const navigateToStra = () => {
-        // 👇️ navigate to /contacts
-        // navigate('/CodeEditorPage');
-        let path2 = `/strategy-management`;
-        history.push(path2)
-      };
+  const navigate = useNavigate();
+
+  const navigateToCode = () => {
+    navigate('/code-editor');
+  };
+
+  const navigateToPort = () => {
+    navigate('/portfolio');
+  };
+
+  const navigateToStra = () => {
+    navigate('/strategy-management');
+  };
     /*const navigateToLogin = () => {
         // 👇️ navigate to /contacts
         // navigate('/CodeEditorPage');

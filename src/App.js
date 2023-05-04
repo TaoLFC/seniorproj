@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import CodeEditorPage from "./pages/CodeEditorPage";
@@ -20,15 +20,15 @@ function App() {
           <Link to="/strategy-management">Strategy Management</Link>
           <Link to="/backendlog">Backend Log</Link>
         </nav>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/code-editor" component={CodeEditorPage} />
-          <Route path="/portfolio" component={Portfolio} />
-          <Route path="/strategy-management" component={StrategyManagement} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/backendlog" component={BackendLogPage} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/code-editor" element={<CodeEditorPage />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/strategy-management" element={<StrategyManagement />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/backendlog" element={<BackendLogPage />} />
+        </Routes>
       </div>
     </Router>
   );

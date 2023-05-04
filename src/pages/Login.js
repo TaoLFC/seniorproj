@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
-    history.push("/register");
+    navigate("/register");
   };
 
   const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ const Login = () => {
 
       if (response.ok) {
         // Login successful, redirect to home page
-        history.push("/");
+        navigate("/");
       } else {
         // Login failed, show error message
         setErrorMessage("Incorrect username or password");

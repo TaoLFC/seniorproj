@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './Backendlog.css';
 
 const BackendLogPage = () => {
 
   const [logs, setLogs] = useState('');
+  const [hasFetchedLogs, setHasFetchedLogs] = useState(false); // Add a new state variable to track if logs have been fetched
+  const textareaRef = useRef(null);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -14,6 +16,10 @@ const BackendLogPage = () => {
         }
         const logsData = await response.text();
         setLogs(formatLogs(logsData));
+        if (!hasFetchedLogs) { // Only scroll to bottom if logs have not been fetched before
+          scrollToBottom();
+          setHasFetchedLogs(true); // Mark logs as fetched
+        }
       } catch (error) {
         setLogs('Error fetching logs.');
       }
@@ -26,7 +32,7 @@ const BackendLogPage = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [hasFetchedLogs]); // Add hasFetchedLogs to the dependency array
 
   const formatLogs = (logsText) => {
     return logsText
@@ -36,9 +42,16 @@ const BackendLogPage = () => {
       .join("\n");
   };
 
+  const scrollToBottom = () => {
+    if (textareaRef.current) {
+      textareaRef.current.scrollTop = textareaRef.current.scrollHeight;
+    }
+  };
+
   return (
     <div className="BackendLogPage">
       <textarea
+        ref={textareaRef}
         readOnly
         value={logs}
         style={{ whiteSpace: "pre-wrap", lineHeight: "1.5" }}

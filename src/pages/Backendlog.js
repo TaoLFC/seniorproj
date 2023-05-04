@@ -21,7 +21,7 @@ const BackendLogPage = () => {
 
     fetchLogs();
 
-    const intervalId = setInterval(fetchLogs, 10000);
+    const intervalId = setInterval(fetchLogs, 1000);
 
     return () => {
       clearInterval(intervalId);

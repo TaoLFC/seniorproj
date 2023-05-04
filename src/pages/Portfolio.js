@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import React, { useState, useEffect } from 'react'; // Import useEffect
+import { useNavigate } from 'react-router-dom';
 import './Portfolio.css';
 
 const Portfolio = () => {
   const [tab, setTab] = useState('Portfolio');
-  const navigate = useNavigate(); // Add useNavigate hook
+  const [portfolioData, setPortfolioData] = useState([]); // Add a state for storing fetched data
+  const navigate = useNavigate();
 
   const profitLoss = (purchasePrice, marketPrice) => {
     const profit = ((marketPrice - purchasePrice) / purchasePrice) * 100;
@@ -15,6 +16,20 @@ const Portfolio = () => {
     }
   };
 
+  // Fetch data when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/portfolio');
+        const data = await response.json();
+        setPortfolioData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
   /*const goBack = () => {
     navigate(-1); // Add goBack function to handle back button click
   };*/
@@ -48,13 +63,15 @@ const Portfolio = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>AOT</td>
-                <td>100</td>
-                <td>66.50</td>
-                <td>70.00</td>
-                <td>{profitLoss(66.5, 70)}</td>
-              </tr>
+              {portfolioData.map((item) => ( // Loop through the fetched data
+                <tr key={item.stock}>
+                  <td>{item.stock}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.purchased_price}</td>
+                  <td>{item.market_price}</td>
+                  <td>{profitLoss(item.purchased_price, item.market_price)}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         ) : (

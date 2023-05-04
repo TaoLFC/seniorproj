@@ -90,6 +90,9 @@ const StrategyManagement = () => {
           </tr>
         </tbody>
       </table>
+      <div className="notice">
+        * Server will ran the code every 10:15, 11:15, 12:15, 15:15, 16:15 everyday except Saturday and Sunday
+      </div>
     </div>
   );
 };

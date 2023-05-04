@@ -117,4 +117,6 @@ input:checked + .slider:before {
   background-color: #6c6c6c;
 }
 
- 
+.notice {
+  margin-top: 50px; /* Adjust the value to create the desired gap */
+}

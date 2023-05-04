@@ -66,6 +66,7 @@ function CodeEditorPage() {
             <span className="btn-name"> Save</span>
           </button>
         </div>
+        <div>* to place order, use function : execute_order(action('BUY' or 'SELL'), volume, symbol, price)</div>
         <textarea
           className="code-textarea"
           value={code}
